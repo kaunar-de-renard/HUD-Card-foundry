@@ -1,0 +1,29 @@
+{
+  "id": "Cardame",
+  "title": "Interface Carte",
+  "name": "Cardame",
+  "version": "1.0.0",
+  "description": "Module pour ame.",
+  "author": "Shapire",
+  "authors": [
+    {
+      "name": "Shapire",
+      "url": "https://patreon.com/user?u=40253951"
+    }
+  ],
+  "compatibility": {
+    "minimum": "11",
+    "verified": "12"
+  },
+  "scripts": [
+    "scripts/main.js"
+  ],
+  "socket": true,
+  "url": "https://github.com/votre-repo/hybride", 
+  "manifest": "https://github.com/votre-repo/hybride/raw/main/module.json",
+  "download": "https://github.com/votre-repo/hybride/archive/main.zip",
+  "readme": "https://github.com/votre-repo/hybride/blob/main/README.md",
+  "license": "MIT"
+}
+
+

@@ -1,0 +1,50 @@
+<form>
+  <div class="form-group">
+    <button type="button" class="add-deck"><i class="fas fa-plus"></i> Ajouter un deck</button>
+  </div>
+
+  {{#each configs as |deck id|}}
+    <fieldset style="border:1px solid #aaa; padding:10px; margin:10px 0;">
+      <legend>{{deck.name}}</legend>
+      <div class="form-group">
+        <label>Nom du deck</label>
+        <input type="text" name="configs.{{id}}.name" value="{{deck.name}}" />
+      </div>
+      <div class="form-group">
+        <label>UUID de la Pioche</label>
+        <input type="text" name="configs.{{id}}.deck" value="{{deck.deck}}" />
+      </div>
+      <div class="form-group">
+        <label>UUID de la Main</label>
+        <input type="text" name="configs.{{id}}.hand" value="{{deck.hand}}" />
+      </div>
+      <div class="form-group">
+        <label>UUID de la Défausse</label>
+        <input type="text" name="configs.{{id}}.discard" value="{{deck.discard}}" />
+      </div>
+      <div class="form-group">
+        <label>ID de l'acteur</label>
+        <input type="text" name="configs.{{id}}.actorId" value="{{deck.actorId}}" />
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" name="configs.{{id}}.autoDraw" {{checked deck.autoDraw}} /> Pioche auto au tour</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" name="configs.{{id}}.startDraw" {{checked deck.startDraw}} /> Pioche au début du combat</label>
+      </div>
+      <div class="form-group">
+        <label>Cartes à piocher au début</label>
+        <input type="number" name="configs.{{id}}.startAmount" value="{{deck.startAmount}}" />
+      </div>
+      <div class="form-group">
+        <button type="button" class="remove-deck" data-id="{{id}}">
+          <i class="fas fa-trash"></i> Supprimer
+        </button>
+      </div>
+    </fieldset>
+  {{/each}}
+
+  <footer class="sheet-footer flexrow">
+    <button type="submit"><i class="fas fa-save"></i> Enregistrer</button>
+  </footer>
+</form>
