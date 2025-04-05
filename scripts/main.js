@@ -51,11 +51,11 @@ class CardHudSettingsForm extends FormApplication {
 
   async _updateObject(event, formData) {
     const expanded = foundry.utils.expandObject(formData);
-    console.log("📝 Formulaire envoyé :", formData);
-    console.log("📦 Objet expandé :", expanded);
+    console.log(" Formulaire envoyé :", formData);
+    console.log(" Objet expandé :", expanded);
 
     await game.settings.set("my-card-hud", "deckConfigs", expanded.configs || {});
-    console.log("✅ Enregistrement effectué !");
+    console.log(" Enregistrement effectué !");
   }
 }
 
@@ -108,7 +108,7 @@ Hooks.on("getSceneControlButtons", controls => {
 // ==================================
 async function openDeckSelector() {
   const configs = game.settings.get("my-card-hud", "deckConfigs");
-  console.log("🎴 Deck configs chargés :", configs);
+  console.log("Deck configs chargés :", configs);
 
   if (!configs || Object.keys(configs).length === 0) {
     ui.notifications.warn("Aucun deck configuré !");
@@ -116,7 +116,7 @@ async function openDeckSelector() {
   }
 
   const deckList = Object.entries(configs).map(([id, conf]) => {
-    console.log("🧪 Deck ID :", id, "| Nom :", conf.name);
+    console.log(" Deck ID :", id, "| Nom :", conf.name);
     return `<option value="${id}">${conf.name || "Deck sans nom"}</option>`;
   }).join("");
 
@@ -129,7 +129,7 @@ async function openDeckSelector() {
         label: "Ouvrir",
         callback: html => {
           const deckId = html.find("#deckChoice").val();
-          console.log("📦 Deck sélectionné :", deckId);
+          console.log(" Deck sélectionné :", deckId);
           if (deckId) launchCardInterface(configs[deckId]);
         }
       },
@@ -167,10 +167,10 @@ const combatHook = async (combat, update) => {
     if (deck && hand) {
       try {
         await deck.deal([hand], 1);
-        console.log(`🎴 ${config.name} : pioche automatique (début du tour).`);
+        console.log(` ${config.name} : pioche automatique (début du tour).`);
         updateInterface();
       } catch (err) {
-        console.error("❌ Erreur de pioche automatique :", err);
+        console.error(" Erreur de pioche automatique :", err);
       }
     }
   }
@@ -182,10 +182,10 @@ const combatHook = async (combat, update) => {
     if (deck && hand) {
       try {
         await deck.deal([hand], config.startAmount ?? 1);
-        console.log(`🚀 ${config.name} : pioche de départ (${config.startAmount}).`);
+        console.log(` ${config.name} : pioche de départ (${config.startAmount}).`);
         updateInterface();
       } catch (err) {
-        console.error("❌ Erreur de pioche initiale :", err);
+        console.error(" Erreur de pioche initiale :", err);
       }
     }
   }
@@ -194,7 +194,7 @@ const combatHook = async (combat, update) => {
 //  Branche le hook et enregistre
 Hooks.on("updateCombat", combatHook);
 deckHooks.set(config.actorId, combatHook);
-console.log(`✅ Hook combat fusionné activé pour ${config.name}`);}
+console.log(` Hook combat fusionné activé pour ${config.name}`);}
 
   
   
